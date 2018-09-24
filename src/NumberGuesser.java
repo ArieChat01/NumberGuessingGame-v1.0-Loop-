@@ -7,12 +7,18 @@ public class NumberGuesser {
         int pickedNumber;
         int userNumber;
         Scanner keyboard;
+        String userPlayAgain;
+        boolean notWonGame;
+        boolean playAgain;
 
         pickedNumber = (int) (Math.random() * 100);
         keyboard = new Scanner(System.in);
+        notWonGame = true;
+        playAgain = true;
 
         System.out.print(pickedNumber + "\n");
 
+        while (playAgain) {
         System.out.println("Welcome to the NumberGuessing Game!");
         System.out.println("Here's how to play. I am going to think of random number\nbetween 1 and 100.");
         System.out.println("It is your job, to try to guess that number.\nYou will have 5 opportunities.\n \nAre you ready?");
@@ -22,26 +28,38 @@ public class NumberGuesser {
 
         userNumber = keyboard.nextInt();
 
-        while (pickedNumber > userNumber || pickedNumber < userNumber || userNumber == pickedNumber) {
-            if (i == 1){
-                System.out.print("You have run out of tries.");
-                System.exit(0);
-            }
 
-            else if (pickedNumber > userNumber) {
-                System.out.print("Nope. That answer was too low.\nGuess again.\n");
-                i--;
-                System.out.println(i + " :tries left");
-                userNumber = keyboard.nextInt();
+            while (notWonGame) {
 
-            }
-            else if (pickedNumber < userNumber){
-                System.out.println("Nope. That answer was too high.\nGuess again.");
-                i--;
-                System.out.println(i + " :tries left.");
-                userNumber = keyboard.nextInt();
-            }
+                if (i == 1) {
+                    System.out.println("You have run out of tries.");
+                    break;
+                } else if (pickedNumber > userNumber) {
+                    System.out.print("Nope. That answer was too low.\nGuess again.\n");
+                    i--;
+                    System.out.println(i + " :tries left");
+                    userNumber = keyboard.nextInt();
 
+                } else if (pickedNumber < userNumber) {
+                    System.out.println("Nope. That answer was too high.\nGuess again.");
+                    i--;
+                    System.out.println(i + " :tries left.");
+                    userNumber = keyboard.nextInt();
+                } else if (pickedNumber == userNumber) {
+                    System.out.println("You win!");
+                    notWonGame = false;
+                }
+            }
+            System.out.println("\nWant to play again?\n(Answer \"yes\" or \"no\")");
+            userPlayAgain = keyboard.nextLine();
+            userPlayAgain = keyboard.nextLine();
+            if (userPlayAgain == "yes"){
+                System.out.println("");
+            }
+            else if (userPlayAgain == "no"){
+                playAgain = false;
+            }
+            else System.out.println("Thanks for Playing!");
         }
     }
 }
