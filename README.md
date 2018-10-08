@@ -1,1 +1,1 @@
-NumberGuessingGame-v1.0-Loop-
+NumberGuessingGame-v1.0Loop
