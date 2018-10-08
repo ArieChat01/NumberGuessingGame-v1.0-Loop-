@@ -18,6 +18,8 @@ public class NumberGuesser {
         playAgain = true;
 
         while (playAgain) {
+            
+            System.out.println(pickedNumber);
 
         System.out.println("Welcome to the NumberGuessing Game!");
         System.out.println("Here's how to play. I am going to think of random number\nbetween 1 and 100.");
@@ -26,12 +28,12 @@ public class NumberGuesser {
         System.out.println();
         int i = 5;
 
-        userNumber = keyboard.nextInt();
+        /*userNumber = keyboard.nextInt();*/
 
 
             while (notWonGame) {
 
-                if (i == 1) {
+                if (i == 1 && (pickedNumber > userNumber || pickedNumber < userNumber)) {
                     System.out.println("You have run out of tries.");
                     break;
                 } else if (pickedNumber > userNumber) {
